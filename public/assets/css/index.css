@@ -44,6 +44,24 @@ li{
     color: #cee2df;
 }
 
+.alert {
+    background-color:#FADBDA;
+    padding: 20px;
+}
+
+.alert:empty{
+    padding: 0;
+}
+
+.notify {
+    background-color:#CAE5CD;
+    padding: 20px;
+}
+
+.notify:empty{
+    padding: 0;
+}
+
 .main {
     text-align:center;
 }
@@ -72,10 +90,16 @@ li{
     text-align: center;
 }
 
+.inputs{
+    margin: 14px;
+}
+
+.label {
+    font-size:14px;
+}
+
 .text-input {
-    margin: 10px;
-    padding: 4px;
-    font-size: 16px;
+    font-size: 20px;
     border-color: #00213b;
     border-width: 0 0 1px 0;
 }

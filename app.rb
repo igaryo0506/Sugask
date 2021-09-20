@@ -60,7 +60,7 @@ post '/sign_up' do
     password_confirmation: params[:password_confirmation])
     if @user.persisted?
         session[:user] = @user.id
-        flash[:notice] = 'アカウントを作成しました'
+        flash[:notify] = 'アカウントを作成しました'
     redirect '/admin'
     else
         flash[:alert] = 'アカウント作成に失敗しました'

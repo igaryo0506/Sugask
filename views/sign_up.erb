@@ -1,7 +1,14 @@
 <h1>アカウントの登録</h1>
 <form class="form"action='/sign_up' method='POST'>
-    <input class="text-input" placeholder="ユーザーネーム" type='text' name='name'><br>
-    <input class="text-input" placeholder="パスワード"type='password' name='password'><br>
-    <input class="text-input" placeholder="パスワードの確認" type='password' name='password_confirmation'><br>
+    <div class="inputs">
+        <input class="text-input" placeholder="ユーザーネーム" type='text' name='name'><br>
+    </div>
+    <div class="inputs">
+        <input class="text-input" placeholder="パスワード"type='password' name='password'><br>
+        <p class="label">パスワードは6字以上英数字で設定</p>
+    </div>
+    <div class="inputs">
+        <input class="text-input" placeholder="パスワードの確認" type='password' name='password_confirmation'><br>
+    </div>
     <input class="btn" type='submit' value='アカウントを作成'>
 </form>
