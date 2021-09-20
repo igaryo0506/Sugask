@@ -1,0 +1,7 @@
+<form action="/admin/room" method="POST">
+    <input type="submit" value="ルームを作成">
+</form>
+ルーム一覧<br>
+<% @rooms.each do |room| %>
+    <a href="/admin/room/<%= room.id %>"><%= room.id %> <%= room.number %></a><br>
+<% end %>

@@ -1,0 +1,109 @@
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   background-color: white;
+}
+
+header {
+    width: 100%;
+    padding: 30px 4% 10px;
+    background-color: #150201;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    margin: 0; 
+    padding: 0;
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #cee2df;
+}
+nav {
+    margin:0 0 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+}
+
+li{
+    margin: 0 0 0 15px;
+    font-size: 14px;
+    color: #cee2df;
+}
+
+.main {
+    text-align:center;
+}
+
+.alert {
+    text-align:center;
+}
+/*index.htmlについて*/
+.form {
+    width: 100%;
+    text-align:center;
+    margin: 0 auto;
+    color: #00213b;
+}
+
+.number-input {
+    font-size: 24px;
+    width: 240px;
+    padding: 4px;
+    box-sizing: border-box;
+    border-color: #00213b;
+    border-width: 0 0 2px 0;
+}
+
+.number-input::placeholder{
+    text-align: center;
+}
+
+.text-input {
+    margin: 10px;
+    padding: 4px;
+    font-size: 16px;
+    border-color: #00213b;
+    border-width: 0 0 1px 0;
+}
+
+.btn {
+    padding:10px 20px;
+    margin:20px;
+    color: #cee2df;
+    background-color:#00213b;
+    font-size:30px;
+}
+
+.btn:hover{
+    color: #cee2df;
+    background: #150201;
+}
+
+h1{
+    text-align:center;
+}
+
+/*admin_roomのstyle*/
+table{
+    width:60%;
+    margin:auto;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: solid 1px #150201;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Sugask | すぐ聞けるグループ向けツール</title>
+	<link rel="stylesheet" href="/assets/css/index.css">
+</head>
+<body>
+	<header class="header">
+		<h1 class="title">
+			<a href="/">Sugask</a>
+		</h1>
+	    <% if current_user %>
+	    	<nav class="pc-nav">
+	    		<ul>
+			    	<li>"<%= current_user.name %>"としてログイン中</li>
+		    	    <li><a href="/sign_out">ログアウト</a></li>
+		    	</ul>
+		    </nav>
+    	<% else %>
+	    	<nav class="pc-nav">
+	    		<ul>
+	    			<li><a href="/sign_in">ログイン</a></li>
+	    			<li><a href="/sign_up">アカウントを作成</a></li>
+	    		</ul>
+	    	</nav>
+    	<% end %>
+	</header>
+	<div class="main">
+		<div class="alert"><%= flash[:alert] %></div>
+		<%= yield %>
+	</div>
+</body>
+</html>

@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>Sugask | すぐ聞けるグループ向けソフト</title>
-</head>
-<body>
-	<header>
-		<h3>Sugask</h3>
-		<a href="#">ログイン</a>
-		<a href="#">新規作成</a>
-	</header>
-	<h1>Sugask</h1>
-	<form action="/room" method="POST">
-		<p>ルームID</p>
-		<input type="text" id="room_number">
-		<input type="submit" value="入室">
+<div class="form">
+	<form action="/room" method="GET">
+		<h1>ルームID</h1>
+		<input class="number-input" type="tel" placeholder="数字を入力" name="number"><br>
+		<input class="btn" type="submit" value="入室">
 	</form>
-</body>
-</html>
+</div>

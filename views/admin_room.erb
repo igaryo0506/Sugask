@@ -1,0 +1,36 @@
+<h1>RoomID: <%= @room.number %></h1>
+<h2>質問一覧</h2>
+<table>
+    <tr>
+        <th>ユーザーネーム</th>
+        <th>質問内容</th>
+        <th>回答済み/未回答</th>
+        <th>日時</th>
+    </tr>
+    <tr>
+        <td>佐藤</td>
+        <td>関数と変数の違いがわからない</td>
+        <td><input type="checkbox" id="scales" name="scales" ></td>
+        <td>2021-09-19 10:28:30 UTC</td>
+    </tr>
+    <% @room.questions.each do |q| %>
+        <tr>
+            <td><%= !!q.name ? q.name : '名前なし' %></td>
+            <td><%= !!q.content ? q.content : '内容なし' %></td>
+            <td><input type="checkbox" id="scales" name="scales"></td>
+            <td><%= q.created_at %></td>
+        </tr>
+    <% end %>
+</table>
+-----------------------------------------------------<br>
+アクセス権限のあるユーザー一覧<br>
+<% @room.users.each do |user| %>
+    <%= user.name %><br>
+<% end %>
+-----------------------------------------------------<br>
+ユーザーにアクセス権限を付与
+<form action="/admin/invite/<%= @room.id %>" method="POST">
+    <input type="text" placeholder="ユーザーネーム" name="name">
+    <input type="submit" value="招待">
+</form>
+-----------------------------------------------------<br>
