@@ -12,6 +12,11 @@ configure do
     use Rack::Flash
 end
  
+before '/admin/*' do
+    unless current_user
+        redirect '/'
+    end
+end
 helpers do
     def current_user
         User.find_by(id: session[:user])
@@ -41,10 +46,13 @@ end
 
 post '/sign_in' do
     user = User.find_by(name: params[:name])
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(params[:password]) && user.valid?
         session[:user] = user.id
+        redirect '/admin'
+    else
+        flash[:alert] = 'ユーザー作成に失敗しました'
+        redirect '/sign_up'
     end
-    redirect '/admin'
 end
 
 post '/sign_up' do
@@ -52,8 +60,12 @@ post '/sign_up' do
     password_confirmation: params[:password_confirmation])
     if @user.persisted?
         session[:user] = @user.id
-    end
+        flash[:notice] = 'アカウントを作成しました'
     redirect '/admin'
+    else
+        flash[:alert] = 'アカウント作成に失敗しました'
+        redirect '/sign_up'
+    end
 end
 
 get '/room' do

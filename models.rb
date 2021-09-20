@@ -5,14 +5,18 @@ ActiveRecord::Base.establish_connection
 class User < ActiveRecord::Base
     has_secure_password
     validates :name,
-        presence: true
+        presence: true,
+        uniqueness: true
     validates :password,
         length:{in: 5..10}
+        
     has_many :user_room_relationships
     has_many :rooms, through: :user_room_relationships
 end
 
 class Room < ActiveRecord::Base
+    validates :number,
+            uniqueness: true
     has_many :user_room_relationships
     has_many :users, through: :user_room_relationships
     has_many :questions
