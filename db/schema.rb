@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_09_19_143200) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "number"
+    t.string "name"
   end
 
   create_table "user_room_relationships", force: :cascade do |t|

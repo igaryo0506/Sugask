@@ -46,12 +46,12 @@ end
 
 post '/sign_in' do
     user = User.find_by(name: params[:name])
-    if user && user.authenticate(params[:password]) && user.valid?
+    if user && user.authenticate(params[:password])
         session[:user] = user.id
         redirect '/admin'
     else
-        flash[:alert] = 'ユーザー作成に失敗しました'
-        redirect '/sign_up'
+        flash[:alert] = 'ユーザーが見つかりません'
+        redirect '/sign_in'
     end
 end
 
@@ -94,18 +94,23 @@ get '/admin' do
 end
 
 post '/admin/room' do
-    while true
-        number = ''
-        for num in 1..6 do
-            number += rand(1..9).to_s
+    if params[:name] == ''
+        flash[:alert] = "タイトルを入力してください"
+        redirect '/admin'
+    else
+        while true
+            number = ''
+            for num in 1..6 do
+                number += rand(1..9).to_s
+            end
+            unless Room.find_by(number: number)
+                newRoom = Room.create(number: number, name: params[:name])
+                UserRoomRelationship.create(user_id: current_user.id, room_id: newRoom.id)
+                break
+            end
         end
-        unless Room.find_by(number: number)
-            newRoom = Room.create(number: number)
-            UserRoomRelationship.create(user_id: current_user.id, room_id: newRoom.id)
-            break
-        end
+        redirect '/admin'
     end
-    redirect '/admin'
 end
 
 get '/admin/room/:id' do

@@ -1,7 +1,10 @@
-<form action="/admin/room" method="POST">
-    <input type="submit" value="ルームを作成">
+<form class="form" action="/admin/room" method="POST">
+    <div class="inputs">
+        <input class="text-input" placeholder="タイトルを設定" name="name">
+    </div>
+    <input class="btn" type="submit" value="ルームを新規作成">
 </form>
-ルーム一覧<br>
+<h1>ルーム一覧</h1>
 <% @rooms.each do |room| %>
-    <a href="/admin/room/<%= room.id %>"><%= room.id %> <%= room.number %></a><br>
+    <a href="/admin/room/<%= room.id %>">タイトル: <%= room.name %> ID: <%= room.number %></a><br>
 <% end %>
