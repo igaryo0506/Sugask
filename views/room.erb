@@ -1,7 +1,11 @@
-<form action='/room/ask/<%= @room.id %>' method='POST'>
-    ユーザーネーム
-    <input type='text' name='name'>
-    質問内容
-    <input type='text' name='content'>
-    <input type='submit' value='質問する'>
+<form class="form" action='/room/ask/<%= @room.id %>' method='POST'>
+    <div class="inputs">
+        <p>ユーザーネーム</p>
+        <input class="text-input" type='text' name='name'>
+    </div>
+    <div class="inputs">
+        <p>質問内容</p>
+        <textarea class="text-input" type='text' name='content' cols="100" rows="5"></textarea></textarea>
+    </div>
+    <input class="btn" type='submit' value='質問する'>
 </form>

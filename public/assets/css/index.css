@@ -132,3 +132,7 @@ table{
 th, td{
     border: solid 1px #150201;
 }
+
+textarea{
+    resize:none;
+}
