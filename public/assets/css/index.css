@@ -47,6 +47,7 @@ li{
 .alert {
     background-color:#FADBDA;
     padding: 20px;
+    text-align:center;
 }
 
 .alert:empty{
