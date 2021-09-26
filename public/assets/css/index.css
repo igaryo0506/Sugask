@@ -57,6 +57,7 @@ li{
 .notify {
     background-color:#CAE5CD;
     padding: 20px;
+    text-align:center;
 }
 
 .notify:empty{
@@ -65,12 +66,9 @@ li{
 
 .main {
     text-align:center;
-    margin: 60px 0;
+    margin: 0px 0;
 }
 
-.alert {
-    text-align:center;
-}
 /*index.htmlについて*/
 .form {
     width: 100%;
