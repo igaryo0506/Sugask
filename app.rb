@@ -89,7 +89,7 @@ get '/admin' do
     if !current_user
         redirect '/'
     end
-    @rooms = Room.all
+    @rooms = current_user.room
     erb :admin
 end
 
