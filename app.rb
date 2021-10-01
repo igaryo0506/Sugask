@@ -50,7 +50,7 @@ post '/sign_in' do
         session[:user] = user.id
         redirect '/admin'
     else
-        flash.now[:alert] = 'ユーザーが見つかりません'
+        flash[:alert] = 'ユーザーが見つかりません'
         redirect '/sign_in'
     end
 end
@@ -60,10 +60,10 @@ post '/sign_up' do
     password_confirmation: params[:password_confirmation])
     if @user.persisted?
         session[:user] = @user.id
-        flash.now[:notify] = 'アカウントを作成しました'
+        flash[:notify] = 'アカウントを作成しました'
     redirect '/admin'
     else
-        flash.now[:alert] = 'アカウント作成に失敗しました'
+        flash[:alert] = 'アカウント作成に失敗しました'
         redirect '/sign_up'
     end
 end
@@ -73,7 +73,7 @@ get '/room' do
     if @room
         erb :room
     else
-        flash.now[:alert] = '存在しないルームIDです'
+        flash[:alert] = '存在しないルームIDです'
         redirect '/'
     end
 end
@@ -81,7 +81,7 @@ end
 post '/room/ask/:id' do
     @room = Room.find(params[:id])
     Question.create(name: params[:name], content: params[:content], is_done: false, room_id:@room.id)
-    flash.now[:notify] = '質問を投稿できました'
+    flash[:notify] = '質問を投稿できました'
     erb :room
 end
 
@@ -124,4 +124,10 @@ post '/admin/invite/:id' do
         UserRoomRelationship.create(user_id: user.id, room_id: params[:id])
     end
     redirect "/admin/room/#{params[:id]}"
+end
+
+post '/admin/done' do
+    question = Question.find(params[:id])
+    question.is_done = !question.is_done
+    question.save
 end

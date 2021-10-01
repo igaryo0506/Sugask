@@ -5,6 +5,16 @@
     <input class="btn" type="submit" value="ルームを新規作成">
 </form>
 <h1>ルーム一覧</h1>
-<% @rooms.each do |room| %>
-    <a href="/admin/room/<%= room.id %>">タイトル: <%= room.name %> ID: <%= room.number %></a><br>
-<% end %>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <th>ID</th>
+    </tr>
+    
+    <% @rooms.each do |room| %>
+        <tr>
+            <td><a class="context" href="/admin/room/<%= room.id %>"><%= room.name %></a></td>
+            <td><%= room.number %></td>
+        </tr>
+    <% end %>
+</table>

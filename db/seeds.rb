@@ -2,3 +2,5 @@ User.create(name: "test",password: "password", password_confirmation: "password"
 User.create(name: "test2",password: "password", password_confirmation: "password")
 Room.create(name: "2020spring", number: "111111")
 UserRoomRelationship.create(user_id: 1, room_id: 1)
+Question.create(room_id: 1, name: "ask_test", is_done: false, content: "質問があります！")
+Question.create(room_id: 1, name: "ask_test", is_done: false, content: "ご飯食べに行きたいです！")

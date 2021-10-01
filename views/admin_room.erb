@@ -7,21 +7,29 @@
         <th>回答済み/未回答</th>
         <th>日時</th>
     </tr>
-    <tr>
-        <td>佐藤</td>
-        <td>関数と変数の違いがわからない</td>
-        <td><input type="checkbox" id="scales" name="scales" ></td>
-        <td>2021-09-19 10:28:30 UTC</td>
-    </tr>
-    <% @room.questions.each do |q| %>
+    <% @room.questions.order(id: "DESC").each do |q| %>
         <tr>
             <td><%= !!q.name ? q.name : '名前なし' %></td>
             <td><%= !!q.content ? q.content : '内容なし' %></td>
-            <td><input type="checkbox" id="scales" name="scales"></td>
+            <% if q.is_done %>
+                <td><input type="checkbox" class="cb" name="is_done[]" value=<%= q.id %> checked></td>
+            <% else %>
+                <td><input type="checkbox" class="cb" name="is_done[]" value=<%= q.id %>></td>
+            <% end %>
             <td><%= q.created_at %></td>
         </tr>
     <% end %>
 </table>
+<script>
+    window.onload = function () {
+        $(".cb").click(function(){
+            $.ajax("/admin/done", {
+                type: "POST",
+                data: { id: $(this).val() }
+            })
+        });
+    };
+</script>
 <br>-----------------------------------------------------<br><br>
 アクセス権限のあるユーザー一覧<br>
 <% @room.users.each do |user| %>
